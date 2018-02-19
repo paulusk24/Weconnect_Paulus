@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+<body style="background-color:rgb(255, 255, 255);">
+    <header>
+            <div class ="container" style="margin-bottom:30px;">
+              <div class ="row">
+                  <div class=col-12>
+                    <nav class="navbar navbar-inverse navbar-light text" style="background-color : #944660;" >
+                      <a class="navbar-brand " href="#">
+                      <img src="static/images/logo.jpg" width="150" height="150" class="d-inline-block align-top " alt="">
+                     <h2>WE CONNECT - Business Network</h2>
+                      </a>
+                      <a  class="nav-item nav-link text" href="login"><button>Logout</button></a>
+                    </nav> 
+                  </div>      
+              </div>  
+            </div>  
+          </header>       
+<div class ="container" style="margin-bottom:30px;">
+    <img src="static/images/logo2.jpg" width="1080" height="250" class="d-inline-block align-top " alt="">
+</div>
+
+<div class ="container">
+    <div class ="row">
+        <div class=col-12>
+          <div class="jumbotron" style="background-color:rgb(166, 232, 244);">
+              <h1 class="display-5 align">Welcome To We Connect</h1>
+              <hr class="my-4">
+              <p class="align"> Catch up with the trending business on the Network! Search for businesses new business that will ensure convinient trade.</p> 
+              <hr class="my-4">
+
+              <div class="container center">
+              <div class=col-10 >
+<!-- Link to add a business -->
+<p class="align">Click <a href="/business"><button>here</button></a> to add a business.</p>
+<br>
+<h3> Businesses:</h3>
+<!-- Drop down of search criterions-->
+<p>Search businesses by:</p>
+<select>
+  <option value="Location">Location</option>
+  <option value="Name">Name</option>
+</select><br>
+<!-- Text area-->
+<textarea name="message" rows="1" cols="30">
+    Input...
+  </textarea>
+
+{% for post in posts %}
+   <strong> Title:</strong> {{ post.title}} <br>
+   <strong> Post:</strong> {{ post.description}} <br>
+   <br>
+{% endfor %}
+<!-- Table of businesses that have been created-->
+                                
+<table class="table table-hover table-striped">
+  <thead>
+  <tr>
+      <th>Business Name</th>
+      <th>Description</th>
+      <th colspan="2">Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+      <td><a href="'#'">GO REAL ESTATE BROKER (GREB) </a></td>
+      <td><p>GREB is an application that is here to get you your dream home.  </p>
+          <p>Pick your dream home and neighbourhood with just a simple click! For inquiries please reach us on our helpline.</p></td>
+      <td><a href="#">Reviews</a></td>
+        </tr>
+          </tbody>
+</table>
+               </div>
+            </div>
+         </div>
+       </div>
+  </div>
+</div>
+{% endblock %}
