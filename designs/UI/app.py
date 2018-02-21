@@ -20,7 +20,7 @@ def login_required(f):
             return redirect(url_for ('login'))
     return wrap
 
-@app.route('/login',methods=['GET', 'POST'])
+@app.route('/api/auth/v1/login',methods=['GET', 'POST'])
 
 def login():
   error = None
@@ -34,28 +34,28 @@ def login():
   return render_template('login.html',error=error)
 
 #use decorators t link the function to the url
-@app.route('/home')
+@app.route('/api/v1/home')
 @login_required
 def home():
+    
         return render_template('home.html')
 
 #user creates an account
-@app.route('/register')
-@login_required
+@app.route('/api/auth/v1/register')
 def register():
         return render_template('register.html')
 
-@app.route('/business')
+@app.route('/api/v1/businesses')
 @login_required
 def business():
         return render_template('business.html')
 
-@app.route('/logout')
+@app.route('/api/auth/v1/logout')
 @login_required
 def logout():
     session.pop('logged_in', None)
     flash('You were just logged out!')
-    return redirect(url_for('welcome'))
+    return redirect(url_for('login'))
 
 
 

@@ -1,5 +1,6 @@
+from app import app
 #User Models
-class Users(object):
+class User(object):
        
     def __init__(self,username,email, password,user_date_stamp):
         #initiliazing User class constructor
@@ -10,7 +11,7 @@ class Users(object):
 
     
 
-class Businesses(object):
+class Business(object):
     
     def __init__(self, business_id, business_title,business_description,category_id,email,business_date_stamp):
         #initiliazing business class constructor
@@ -21,7 +22,7 @@ class Businesses(object):
         self.email= email
         self.business_date_stamp = business_date_stamp
 
-class Reviews(object):
+class Review(object):
 
     def __init__(self,username,review_id,review_description,business_id):
      #initiliazing business reviews constructor

@@ -5,7 +5,7 @@ import datetime
 from app import app
 
 #Route for registering a user.This route takes the users details and assigns them a unique id 
-@app.route("/register",methods=["POST"])
+@app.route("/api/auth/v1/register",methods=["POST"])
 def create_user():
     
     if not request.json:
@@ -52,5 +52,6 @@ def create_user():
         "Status":"Success",
         "message" : "New user  has been created!"
         }),201
+    
 
     
