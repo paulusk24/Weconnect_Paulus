@@ -39,10 +39,10 @@ def login():
 def home():
         return render_template('home.html')
 
+#user creates an account
 @app.route('/register')
 @login_required
 def register():
-    
         return render_template('register.html')
 
 @app.route('/business')
