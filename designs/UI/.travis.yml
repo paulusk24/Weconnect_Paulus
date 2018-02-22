@@ -11,5 +11,5 @@ branches:
   - develop
   - feature
   - feature_api_logic
-after_success:
-- coveralls
+ after_success:
+  - coveralls

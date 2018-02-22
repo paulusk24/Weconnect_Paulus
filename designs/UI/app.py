@@ -37,7 +37,11 @@ def login():
 @app.route('/api/v1/home')
 @login_required
 def home():
-    
+     #return "WE, CONNECT" #return a string
+        #g.db = connect_db() 
+        cur = g.db.execute('select * from businesses')
+        businesses = [dict(title=row[0], description=row[1]) for row in cur.fetchall()]
+        g.db.close()
         return render_template('home.html')
 
 #user creates an account
