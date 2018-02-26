@@ -4,7 +4,6 @@ from validate_email import validate_email
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS, cross_origin
 import datetime
-from app import app
 import jwt 
 import re
 import uuid
@@ -107,7 +106,6 @@ def create_user(current_user):
             email=email, 
             password=hashed_password,
             user_date_stamp = str(datetime.datetime.now()),
-            admin=False
             )
     #Saving new user
     db.session.add(new_user)

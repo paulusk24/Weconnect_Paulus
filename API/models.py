@@ -1,8 +1,9 @@
-
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from app import db
+from API import app
 
-#db = SQLAlchemy(app)
+
+db = SQLAlchemy(app)
 
 #-----------------------------------------------SQLALCHEMY MODELS-----------------------------------------------------
 #User Models
@@ -14,7 +15,7 @@ class User(db.Model):
     email = db.Column(db.String(60),primary_key=True)
     password = db.Column(db.String(80),nullable=False)
     user_date_stamp =db.Column(db.String(30),nullable=False)
-       
+      
     def __init__(self,username,email, password,user_date_stamp):
         #initiliazing User class constructor
         self.username=username
