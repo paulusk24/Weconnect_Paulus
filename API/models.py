@@ -9,6 +9,7 @@ from app import db
 class User(db.Model):
 
     __tablename__ = "clients"
+    #public_id = db.Column(db.String(50),unique=True)
     username = db.Column(db.String(50),nullable=False,unique=True)
     email = db.Column(db.String(60),primary_key=True)
     password = db.Column(db.String(80),nullable=False)
@@ -36,10 +37,10 @@ class Business(db.Model):
     category_id =db.Column(db.String(30))
     email = db.Column(db.String(60))
     business_date_stamp = db.Column(db.String(30))
+    location_id=db.Column(db.String(30))
 
 
-
-    def __init__(self,business_id,business_title,business_description,category_id,email,business_date_stamp):
+    def __init__(self,business_id,business_title,business_description,category_id,email,business_date_stamp,location_id):
         #initiliazing business class constructor
         self.business_id= business_id
         self.business_title = business_title
@@ -59,9 +60,9 @@ class Review(db.Model):
     username = db.Column(db.String(50),nullable=False)
     review_id = db.Column(db.String(100), primary_key=True)
     review_description = db.Column(db.String(500))
-    business_id = db.Column(db.String(100)
+    business_id = db.Column(db.String(100))
 
-    def __init__(self,username,review_id,review_description,business_id):
+    def __init__(self, username, review_id, review_description, business_id):
        #initiliazing business reviews constructor
        self.username=username
        self.review_id= review_id

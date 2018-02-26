@@ -1,9 +1,11 @@
 import json
 #import flask class from the flask module
 from flask import (Flask,render_template,redirect,
-                url_for,request,make_response,session,flash,g)
+                url_for,request,make_response,session,flash,jsonify)
 from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
+import uuid
+from werkzeug.security import generate_password_hash,check_password_hash
 
 #create application object
 app = Flask(__name__)
@@ -14,7 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] ='postgresl://postgres:c0m9k#tWxF@localhos
 #create SQLAlchemy object
 db = SQLAlchemy(app)
 
-from models import User
+from API import views,models
 
 #login requred decorator
 def login_required(f):
@@ -54,7 +56,7 @@ def register():
         return render_template('register.html')
 
 @app.route('/api/v1/businesses')
-@login_required
+@login_required 
 def business():
         return render_template('business.html')
 
