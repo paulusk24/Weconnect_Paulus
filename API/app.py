@@ -10,7 +10,7 @@ from functools import wraps
 #create application object
 app = Flask(__name__)
 #set a secret key
-app.config['SECRET_KEY'] = 'Johnny Depp'
+app.config['SECRET_KEY'] = 'JohnnyDepp'
 app.config['SQLALCHEMY_DATABASE_URI'] ='postgresl://postgres:c0m9k#tWxF@localhost/weconnect.db'
 
 from models import User,Business,Review
