@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from API import app
+#import app
 
 
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 #-----------------------------------------------SQLALCHEMY MODELS-----------------------------------------------------
 #User Models
@@ -26,9 +26,16 @@ class User(db.Model):
     def __repr__(self):
         #method to return user information when querying database
         return "<User: %s>" % self.email
+        
+    def password_reset(self,username,newpassword):
+        for user in self.user_list:
+            if user['username'] == username:
+                user['password'] = newpassword
+                return "Password reset successfully"
+        else:
+            return "password has been reset"    
 
-    
-
+#Business Models
 class Business(db.Model):
     
     __tablename__ = "Businesses"
@@ -49,11 +56,13 @@ class Business(db.Model):
         self.category_id =category_id
         self.email= email
         self.business_date_stamp = business_date_stamp
-
+        self.location_id = location_id 
     def __repr__(self):
         #method for returning data when querying database
         return "<Business: %s>" % self.business_title 
 
+
+#Review Model
 
 class Review(db.Model):
 

@@ -3,6 +3,8 @@ from flask import (Flask,redirect,
                 url_for,request,make_response,session,flash,jsonify)
 from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
+#from flask_migrate import Migrate
+
 
 
 #create application object
@@ -11,10 +13,14 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Johnny Depp'
 app.config['SQLALCHEMY_DATABASE_URI'] ='postgresl://postgres:c0m9k#tWxF@localhost/weconnect.db'
 
-db = SQLAlchemy(app)
+from models import User,Business,Review
+import views
 
-from API import views
-from API import models
+#db = SQLAlchemy(app)
+
+#migrate = Migrate(app,db)
+
+
 
 if __name__ == '__main__':
   app.run(debug=True)
