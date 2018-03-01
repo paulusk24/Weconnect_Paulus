@@ -1,7 +1,17 @@
-{% extends "layout.html" %}
-
-{% block title %}Business_Registration{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="static/css/style.css" >
+        <title>WE CONNECT-Business</title>
+    </head>
+    <body>
+        <div class="container">
 
 <body style="background-color:white;">
     <header>
@@ -10,11 +20,11 @@
                   <div class=col-12>
                     <nav class="navbar navbar-inverse navbar-light text" style="background-color : #944654;" >
                       <a class="navbar-brand " href="#">
-                      <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top " alt="">
+                      <img src="../static/images/logo.png" width="30" height="30" class="d-inline-block align-top " alt="">
                       <h2>We Connect - Business Network</h2>
                       </a>
-                      <a  class="nav-item nav-link text" href="/api/v1/home"><button>Businesses</button></a>
-                      <a  class="nav-item nav-link text" href="/api/auth/v1/login"><button>Log out</button></a>
+                      <a  class="nav-item nav-link text" href="home.html"><button>Businesses</button></a>
+                      <a  class="nav-item nav-link text" href="login.html"><button>Log out</button></a>
                     </nav> 
                   </div>      
               </div>  
@@ -108,4 +118,23 @@
                 </div>
               </div>
             </div>
-            {% endblock %}
+        </div>
+        
+        <footer>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                  <p class="copyright text-muted">Copyright &copy; We_Connect 2018</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+      
+
+         <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  
+    </body>
+</html> 

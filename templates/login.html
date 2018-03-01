@@ -1,17 +1,28 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="static/css/style.css" >
+        <title>WE CONNECT-Login</title>
+    </head>
+    <body>
+        <div class="container">
 
-{% block title %}Login{% endblock %}
-{% block content %}
 <header>
     <div class ="container" style="margin-bottom:30px;">
       <div class ="row">
           <div class=col-12>
             <nav class="navbar navbar-inverse navbar-light text" style="background-color : #944660;" >
               <a class="navbar-brand " href="#">
-              <img src="static/images/logo.jpg" width="150" height="150" class="d-inline-block align-top " alt="">
+              <img src="../static/images/logo.jpg" width="150" height="150" class="d-inline-block align-top " alt="">
              <h2>WE CONNECT - Business Network</h2>
               </a>
-              <a  class="nav-item nav-link text" href="/api/auth/v1/login"><button>SignIn</button></a>
+              <a  class="nav-item nav-link text" href="login.html"><button>SignIn</button></a>
             </nav> 
           </div>      
       </div>  
@@ -31,18 +42,37 @@
                <h1>Please Login</h1>
             <br>
             <form action="" method="post">
-                <input type="text" placeholder="Username" name="username" value="{{request.form.username}}">
-                <input type="password" placeholder="Password" name="password" value="{{request.form.password}}">
+                <input type="text" placeholder="Username" name="username" value="">
+                <input type="password" placeholder="Password" name="password" value="">
                 <input class="btn btn-default" type="submit" value="Login">
             </form>
         </div>
     </div>
     <br>
-    <p class="align">Click <a href="/api/auth/v1/register"><button>here</button></a> to create an account.</p>
+    <p class="align">Click <a href="register.html"><button>here</button></a> to create an account.</p>
   </div>
 
 </div>
 </div>
 </div>
 
-{% endblock %}
+</div>
+        
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p class="copyright text-muted">Copyright &copy; We_Connect 2018</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+ <!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</body>
+</html> 
