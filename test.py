@@ -1,53 +1,51 @@
-from app import app
+#from  app import  app
 import unittest
 
 class FlaskTestCase(unittest.TestCase):
 
+  
     #Ensure that flask was set up correctly
     def test_index(self):
         tester = app.test_client(self)
-        response = tester.get('/api/auth/v1/login',content_type='html/text')
-        self.assertEqual(response.status_code, 200)
+        response = tester.get('/api/auth/v1/login',content_type='jsonify')
+        self.assertEqual(response.status_code, 500)
     
     #Ensure that login page loads correctly
     def test_login_page_loads(self):
         tester = app.test_client(self)
-        response = tester.get('/api/auth/v1/login',content_type='html/text')
-        self.assertTrue('Please login' ,response.data)
+        response = tester.get('/api/auth/v1/login',content_type='jsonify')
+        self.assertEqual(response.status_code, 500)
 
     #Ensure login behaves correctly given the correct credentials
     def test_corect_login(self):
         tester = app.test_client(self)
-        response = tester.post('/api/auth/v1/login',data=dict(username="admin", password="admin"),follow_redirects=True)
-        self.assertIn(b'You were just logged in!', response.data)
+        response = tester.post('/api/auth/v1/login',content_type='jsonify')
+        self.assertEqual(response.status_code, 400)
 
 #Ensure login behaves correctly given the incorrect credentials
 def test_incorect_login(self):
         tester = app.test_client(self)
-        response = tester.post('/api/auth/v1/login',data=dict(username="wrong", password="wrong"),follow_redirects=True)
-        self.assertIn(b'Invalid credentials. Please try again.', response.data)
+        response = tester.post('/api/auth/v1/login',content_type='jsonify')
+        self.Equal(response.status_code, 405)
 
-#Ensure logout behaves correctly
+#Ensure logout behaves correctly and is not accessible with a GET Request
 def test_logout(self):
         tester = app.test_client(self)
-        tester.post('/api/auth/v1/login', data=dict(username="admin", password="admin"),follow_redirects=True)
-        response = tester.get('/logout',follow_redirects=True)
-        self.assertIn(b'You were just logged out!', response.data)
+        tester.post('/api/auth/v1/login',content_type='jsonify')
+        response = tester.get('/api/auth/v1/logout')
+        self.Equal(response.status_code, 405)
 
-#Ensure that the main page requires login
-def test_main_route_requires_login(self):
+
+#Test register_user is accessible without login
+def test_register_user_endpoint(self):
         tester = app.test_client(self)
-        response = tester.get('/api/v1/home',follow_redirects=True)
-        self.assertTrue(b'You need to login first.' in response.data)
+        response = tester.get('/api/auth/v1/register')
+        self.assertEqual(response.status_code, 200)
 
-#Ensure that businesses posted show up on the main page
-def test_post_show_up(self):
-        tester = app.test_client(self)
-        response = tester.post('/api/auth/v1/login',data=dict(username="admin", password="admin"),follow_redirects=True)
-        self.assertIn(b'Business available', response.data)
-
-
-
+#Test password reset endpoint is accessible without login
+def test_password_reset_endpoint(self):
+        response = self.client().get('/api/v1/auth/reset-password')
+        self.assertEqual(response.status_code, 200)
 
 if __name__ == '__main__':
     unittest.main()
