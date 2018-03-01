@@ -8,13 +8,13 @@ class FlaskTestCase(unittest.TestCase):
     def test_index(self):
         tester = app.test_client(self)
         response = tester.get('/api/auth/v1/login',content_type='jsonify')
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 200)
     
     #Ensure that login page loads correctly
     def test_login_page_loads(self):
         tester = app.test_client(self)
         response = tester.get('/api/auth/v1/login',content_type='jsonify')
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 200)
 
     #Ensure login behaves correctly given the correct credentials
     def test_corect_login(self):

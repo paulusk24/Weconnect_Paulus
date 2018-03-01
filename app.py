@@ -42,14 +42,7 @@ def create_user():
                 "Status":"Fail",
                 "message":"Please ensure you have input all the required fields"
             }),400
-
-    #Checking to see if the email is valid
-    if  not validate_email(email):
-        return jsonify({
-            "Status":"Fail",
-            "message":"Please input correct email"
-            }),400
-    
+  
     #Checking to make sure no empty strings are sent
     if username == "" or email == "" or password== "":
         return jsonify({
@@ -66,6 +59,7 @@ def create_user():
 #user logs in
 @app.route('/api/auth/v1/login', methods=['GET', 'POST'])
 def login():
+    response = jsonify({})
     error = None
     if request.method == 'POST':
         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
@@ -84,18 +78,14 @@ def logout():
     response.status_code = 405
 
 
-@app.route('/api/auth/v1/reset-password', methods=['GET', 'POST'])
+@app.route('/api/auth/v1/reset-password', methods=['POST'])
 def password_reset():
-    if request.method == "GET":
-        user = User.get_user(id(request.data.get('userId', 0)))
-        response = jsonify(User.get_user_details(user))       
-        response.status_code = 200
-    elif request.method == "POST":
-        user1 = User.get_user((request.data.get('userId', 0)))
-        user = User.get_user_details(user1)
-        user["password"] = str(request.data.get('password', user1.password))
-        response = jsonify({'message':'Password Reset.'})       
-        response.status_code = 200
+    response = jsonify({})
+    user1 = User.get_user((request.data.get('user_id', 0)))
+    user = User.get_user_details(user1)
+    user["password"] = str(request.data.get('password', user1.password))
+    response = jsonify({'message':'Password Reset.'})       
+    response.status_code = 200
     return response
 
 
@@ -103,6 +93,7 @@ def password_reset():
 
 @app.route('/api/v1/businesses/<int:business_id>', methods=['DELETE'])
 def delete_business(business_id):
+    response = jsonify({})
     businesses = Business.get_businesses()
     for bus in businesses:
         if bus.id == int(business_id):
@@ -117,6 +108,7 @@ def delete_business(business_id):
 
 @app.route('/api/v1/businesses/<int:business_id>', methods=['GET'])
 def business_details(business_id):
+    response = jsonify({})
     business = {}
     businesses_list = Business.get_businesses()
     for bus in businesses_list:
@@ -128,17 +120,17 @@ def business_details(business_id):
 
 @app.route('/api/v1/businesses/<int:business_id>/reviews', methods=['POST'])
 def review(business_id):
-    review = Review(comment=str(request.data.get('review_description', '')))
-    review.business_id = int(request.data.get('business_id', 0))
-    review.user_id = int(request.data.get('userId', 0))
+    response = jsonify({})
+    review = Review(review_description=str(request.data.get('review_description', '')),username = int(request.data.get('username','')))
     response = jsonify(Review.get_review(review))       
     response.status_code = 200
     return response
 
 @app.route('/api/v1/businesses/<int:business_id>/reviews', methods=['GET'])
 def reviews(business_id):
+    response = jsonify({})
     reviews = []
-    reviews_list = Review.get_review()
+    reviews_list = Review.get_reviews()
     for review in reviews_list:
         if review.business_id == business_id:
             reviews.append(Review.get_review(review))
