@@ -143,7 +143,7 @@ def create_user(current_user):
 
 
 #Route for password reset
-@app.route('/api/auth/v1/reset-password',methods=["POST"])
+@app.route('/api/auth/v1/register',methods=["POST"])
 @token_required
 def password_reset(current_user):
     login_user = request.get_json(force=True)

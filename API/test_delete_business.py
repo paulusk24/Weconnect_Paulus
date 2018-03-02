@@ -1,9 +1,9 @@
 import json
 from baseTest import BaseTestCase
 
-from API.models import User,Category,business
-from API import  app
-from API.models import db
+from models import User,Business,Review
+import  app
+from models import db
 
 
 class Delete_business(BaseTestCase):

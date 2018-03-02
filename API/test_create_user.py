@@ -1,9 +1,9 @@
 import json
-from tests.baseTest import BaseTestCase
+from baseTest import BaseTestCase
 
-from API.models import User,Category,Recipe
-from API import  app
-from API.models import db
+from models import User,Business,Review
+import app
+from models import db
 
 
 class Create_user(BaseTestCase):
